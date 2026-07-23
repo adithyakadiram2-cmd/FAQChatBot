@@ -1,125 +1,22 @@
-{
-    "faqs": [
-
-        {
-            "question":"What is Artificial Intelligence?",
-            "keywords":["ai","artificial intelligence","what is ai","artificial intelligence meaning"],
-            "answer":"Artificial Intelligence (AI) is the simulation of human intelligence by machines and computer systems."
-        },
-
-        {
-            "question":"What is Python?",
-            "keywords":["python","programming language","what is python","python language"],
-            "answer":"Python is a popular programming language used for web development, Artificial Intelligence, automation and data science."
-        },
-
-        {
-            "question":"Who developed Python?",
-            "keywords":["developer of python","who developed python","who made python","creator of python","guido"],
-            "answer":"Python was developed by Guido van Rossum and released in 1991."
-        },
-
-        {
-            "question":"What is Machine Learning?",
-            "keywords":["machine learning","ml","what is machine learning"],
-            "answer":"Machine Learning is a branch of Artificial Intelligence that allows computers to learn from data without explicit programming."
-        },
-
-        {
-            "question":"What is Deep Learning?",
-            "keywords":["deep learning","dl","what is deep learning"],
-            "answer":"Deep Learning is a subset of Machine Learning that uses neural networks to solve complex problems."
-        },
-
-        {
-            "question":"What is Data Science?",
-            "keywords":["data science","what is data science"],
-            "answer":"Data Science combines statistics, programming and domain knowledge to analyze and extract useful information from data."
-        },
-
-        {
-            "question":"What is FastAPI?",
-            "keywords":["fastapi","what is fastapi","python api framework"],
-            "answer":"FastAPI is a modern Python framework used for building fast and efficient APIs."
-        },
-
-        {
-            "question":"What is Termux?",
-            "keywords":["termux","what is termux","android terminal"],
-            "answer":"Termux is a Linux terminal emulator for Android that allows users to run programming languages and tools directly on their smartphones."
-        },
-
-        {
-            "question":"What is Git?",
-            "keywords":["git","version control","what is git"],
-            "answer":"Git is a distributed version control system used to track changes in source code."
-        },
-
-        {
-            "question":"What is GitHub?",
-            "keywords":["github","what is github"],
-            "answer":"GitHub is a cloud-based platform that allows developers to host and manage Git repositories."
-        },
-
-        {
-            "question":"What is an API?",
-            "keywords":["api","application programming interface","what is api"],
-            "answer":"An API allows different software applications to communicate with each other."
-        },
-
-        {
-            "question":"What is JSON?",
-            "keywords":["json","what is json"],
-            "answer":"JSON stands for JavaScript Object Notation and is commonly used for exchanging data between applications."
-        },
-
-        {
-            "question":"What is Cloud Computing?",
-            "keywords":["cloud computing","cloud"],
-            "answer":"Cloud Computing is the delivery of computing services such as storage and servers over the internet."
-        },
-
-        {
-            "question":"What is Android Studio?",
-            "keywords":["android studio","android development"],
-            "answer":"Android Studio is Google's official IDE used for Android application development."
-        },
-
-        {
-            "question":"What is MIT App Inventor?",
-            "keywords":["mit app inventor","app inventor"],
-            "answer":"MIT App Inventor is a block-based programming platform that allows users to create Android applications easily."
-        },
-
-        {
-            "question":"What is NLP?",
-            "keywords":["nlp","natural language processing"],
-            "answer":"Natural Language Processing enables computers to understand and process human language."
-        },
-
-        {
-            "question":"What is an Internship?",
-            "keywords":["internship","what is internship"],
-            "answer":"An internship is a short-term professional learning experience that provides practical knowledge and skills."
-        },
-
-        {
-            "question":"What is Render?",
-            "keywords":["render","render deployment"],
-            "answer":"Render is a cloud platform used for deploying web applications and APIs."
-        },
-
-        {
-            "question":"What is Uvicorn?",
-            "keywords":["uvicorn"],
-            "answer":"Uvicorn is a lightweight ASGI server commonly used for running FastAPI applications."
-        },
-
-        {
-            "question":"What is Open Source?",
-            "keywords":["open source","opensource"],
-            "answer":"Open Source software provides publicly available source code that anyone can study, modify and distribute."
-        }
-
-    ]
-}
+[
+    {
+        "question": "What are your timings?",
+        "answer": "We are open from 9 AM to 6 PM."
+    },
+    {
+        "question": "Where are you located?",
+        "answer": "We are located in Hyderabad."
+    },
+    {
+        "question": "How can I contact you?",
+        "answer": "Call us at 9876543210."
+    },
+    {
+        "question": "What services do you provide?",
+        "answer": "We provide coaching and training services."
+    },
+    {
+        "question": "What are your fees?",
+        "answer": "Please contact us for the latest fee structure."
+    }
+]

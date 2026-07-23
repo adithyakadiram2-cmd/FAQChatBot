@@ -1,100 +1,41 @@
 import json
-import math
-from collections import Counter
+import os
+from preprocess import preprocess
 
-from preprocess import preprocess_text
+BASE_DIR = os.path.dirname(__file__)
 
-
-# Load FAQs
-with open("faq.json", "r", encoding="utf-8") as file:
-    data = json.load(file)
-
-faqs = data["faqs"]
-
-
-def text_to_vector(text):
-    words = text.split()
-    return Counter(words)
+with open(
+    os.path.join(BASE_DIR, "faq.json"),
+    "r",
+    encoding="utf-8"
+) as f:
+    FAQS = json.load(f)
 
 
-def cosine_similarity(text1, text2):
+def find_answer(user_question):
 
-    vector1 = text_to_vector(text1)
-    vector2 = text_to_vector(text2)
+    user_question = preprocess(user_question)
 
-    intersection = set(vector1.keys()) & set(vector2.keys())
+    # Exact Match
+    for faq in FAQS:
 
-    numerator = sum(
-        vector1[word] * vector2[word]
-        for word in intersection
-    )
-
-    sum1 = sum(value ** 2 for value in vector1.values())
-    sum2 = sum(value ** 2 for value in vector2.values())
-
-    denominator = math.sqrt(sum1) * math.sqrt(sum2)
-
-    if denominator == 0:
-        return 0
-
-    return float(numerator) / denominator
-
-
-def get_best_match(user_question):
-
-    processed_user = " ".join(
-        preprocess_text(user_question)
-    ).lower()
-
-    best_score = 0
-    best_answer = None
-
-    # Exact Question Match
-    for faq in faqs:
-
-        question = faq["question"].lower()
-
-        if user_question.lower() == question:
-
+        if preprocess(faq["question"]) == user_question:
             return faq["answer"]
 
     # Keyword Match
-    for faq in faqs:
+    user_words = set(user_question.split())
 
-        if "keywords" in faq:
+    for faq in FAQS:
 
-            for keyword in faq["keywords"]:
-
-                if keyword.lower() in user_question.lower():
-
-                    return faq["answer"]
-
-    # Cosine Similarity Match
-    for faq in faqs:
-
-        processed_faq = " ".join(
-            preprocess_text(
+        faq_words = set(
+            preprocess(
                 faq["question"]
-            )
-        ).lower()
-
-        score = cosine_similarity(
-            processed_user,
-            processed_faq
+            ).split()
         )
 
-        if score > best_score:
-
-            best_score = score
-            best_answer = faq["answer"]
-
-    # Confidence Threshold
-    if best_score >= 0.20:
-
-        return best_answer
+        if user_words.intersection(faq_words):
+            return faq["answer"]
 
     return (
-        "Sorry, I couldn't find an "
-        "appropriate answer. "
-        "Please ask another question."
+        "Sorry, I could not find an answer."
     )

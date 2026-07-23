@@ -1,9 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from matcher import get_best_match
-from datetime import datetime
+from matcher import find_answer
 
-app = FastAPI()
+app = FastAPI(
+    title="FAQChatBot",
+    version="2.0",
+    description="Business FAQ Chatbot API"
+)
 
 
 class Question(BaseModel):
@@ -12,46 +15,26 @@ class Question(BaseModel):
 
 @app.get("/")
 def home():
-
     return {
-        "message": "FAQ ChatBot API is running successfully."
+        "message": "Welcome to FAQChatBot API"
+    }
+
+
+@app.get("/health")
+def health():
+    return {
+        "status": "ok",
+        "project": "FAQChatBot",
+        "version": "2.0"
     }
 
 
 @app.post("/chat")
-def chat(data: Question):
+def chat(q: Question):
 
-    question = data.question.strip()
+    answer = find_answer(q.question)
 
-    # greetings
-
-    if question.lower() in [
-        "hi",
-        "hello",
-        "hey",
-        "good morning",
-        "good evening"
-    ]:
-
-        return "Hello! How can I help you today?"
-
-
-    # date
-
-    if question.lower() == "date":
-
-        return str(datetime.now().date())
-
-
-    # time
-
-    if question.lower() == "time":
-
-        return str(datetime.now().strftime("%H:%M:%S"))
-
-
-    # chatbot answer
-
-    answer = get_best_match(question)
-
-    return answer
+    return {
+        "question": q.question,
+        "answer": answer
+    }
